@@ -16,7 +16,7 @@
   }
 
   .card {
-    @apply border border-gray-200 rounded-md p-8 bg-gray-50 cursor-pointer
+    @apply border border-gray-200 rounded-md p-8 bg-gray-50 cursor-pointer h-full
   }
 
   .card:hover {

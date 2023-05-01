@@ -26,16 +26,21 @@ export default function Home() {
         {loadingListings ? (
           <p className="text-center animate-pulse text-blue-500">Loading...</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 mx-auto pt-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-5 mx-auto pt-2">
             {listings?.map((listing) => (
               <div
                 key={listing.id}
                 className="flex flex-col card hover:scale-105 transition-all duration-150 ease-out"
+                style={{ padding: "1rem", marginBottom: "1rem" }}
               >
-                <div className="flex flex-1 flex-col pb-2 items-center">
+                <div className="flex flex-1 flex-col items-center">
                   <MediaRenderer
-                    className="w-44"
+                    className="rounded-lg"
                     src={listing.asset.image}
+                    style={{
+                      width: "11rem",
+                      height: "11rem",
+                    }}
                   ></MediaRenderer>
                 </div>
 
