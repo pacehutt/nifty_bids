@@ -10,4 +10,16 @@
   .link {
     @apply text-blue-600 underline cursor-pointer;
   }
+
+  .container {
+    @apply max-w-6xl mx-auto py-4 px-6;
+  }
+
+  .card {
+    @apply border border-gray-200 rounded-md p-8 bg-gray-50 cursor-pointer
+  }
+
+  .card:hover {
+    @apply bg-gray-100;
+  }
 }

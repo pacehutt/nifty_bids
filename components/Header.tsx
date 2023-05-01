@@ -68,11 +68,11 @@ const Header = (props: Props) => {
       <hr className="mt-2" />
 
       <section className="flex flex-col sm:flex-row items-center space-x-2 p-2 justify-between">
-        <div className="h-16 w-16 sm:w-28 md:w-40 cursor-pointer flex-shrink-0 ">
+        <div className="h-16 w-20 sm:w-28 md:w-30 cursor-pointer flex-shrink-0 ">
           <Link href={"/"}>
             <Image
               className="h-full w-full object-contain"
-              src="https://links.papareact.com/bdb"
+              src="/../public/logo.png"
               alt="eBay Logo"
               width={100}
               height={100}
