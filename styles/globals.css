@@ -4,11 +4,11 @@
 
 @layer components {
   .connectWalletBtn {
-    @apply bg-blue-500 text-white font-bold py-2 px-4 rounded cursor-pointer;
+    @apply bg-green-600 text-white font-bold py-2 px-4 rounded cursor-pointer;
   }
 
   .link {
-    @apply text-blue-600 underline cursor-pointer;
+    @apply text-green-400 underline cursor-pointer;
   }
 
   .container {
@@ -16,10 +16,28 @@
   }
 
   .card {
-    @apply border border-gray-200 rounded-md p-8 bg-gray-50 cursor-pointer h-full
+    @apply border border-gray-200 rounded-md p-8 bg-gray-50 cursor-pointer h-full dark:bg-gray-900 dark:border-gray-700
   }
 
   .card:hover {
-    @apply bg-gray-100;
+    @apply bg-gray-700 dark:bg-gray-800
+   
+  }
+
+  .formField{
+    @apply border-2 border-gray-500 bg-gray-700 px-5 pr-16 h-10 rounded-lg text-sm outline-none
+  }
+  .fileField{
+    @apply   pr-16 rounded-lg text-sm outline-none
+  }
+}
+
+@layer base {
+  body {
+    @apply dark:bg-gray-900 dark:text-white text-black bg-white
+  }
+
+  hr{
+    @apply dark:border-gray-600 border-gray-200 my-1
   }
 }

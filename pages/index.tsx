@@ -13,7 +13,7 @@ export default function Home() {
     process.env.NEXT_PUBLIC_MARKETPLACE_CONTRACT,
     "marketplace"
   );
-  // Passinf the contract and getting the listings
+  // Passing the contract and getting the listings
   const { data: listings, isLoading: loadingListings } =
     useActiveListings(contract);
 
@@ -24,7 +24,14 @@ export default function Home() {
 
       <main className="container">
         {loadingListings ? (
-          <p className="text-center animate-pulse text-blue-500">Loading...</p>
+          <>
+            <div className="relative inset-0 flex flex-col items-center justify-center z-50 gap-2 mt-10 pt-10 md:mt-16">
+              <div className="animate-spin rounded-full w-10 border-t-4 border-b-4 border-gray-200 h-10"></div>
+              <p className="text-sm text-bold animate-pulse">
+                Loading your NFTs, please wait
+              </p>
+            </div>
+          </>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-5 mx-auto pt-2">
             {listings?.map((listing) => (
@@ -61,9 +68,9 @@ export default function Home() {
                   </p>
 
                   <div
-                    className={`flex items-center space-x-1 justify-end text-xs w-fit ml-auto p-2 rounded-lg text-white ${
+                    className={`flex items-center space-x-1 justify-end text-xs w-fit ml-auto py-2 rounded-lg text-white px-3 ${
                       listing.type === ListingType.Direct
-                        ? "bg-blue-500"
+                        ? "bg-blue-800"
                         : "bg-red-500"
                     }`}
                   >

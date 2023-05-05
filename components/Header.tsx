@@ -8,6 +8,7 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 type Props = {};
 
@@ -15,6 +16,9 @@ const Header = (props: Props) => {
   const connectWithMetamask = useMetamask();
   const disconnect = useDisconnect();
   const address = useAddress();
+
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === "system" ? systemTheme : theme;
 
   return (
     <div className="max-w-6xl mx-auto">
@@ -39,6 +43,15 @@ const Header = (props: Props) => {
           <p className="hidden md:inline-flex cursor-pointer hover:link">
             Help and Contact
           </p>
+
+          <button
+            onClick={() =>
+              theme == "dark" ? setTheme("light") : setTheme("dark")
+            }
+            className="connectWalletBtn"
+          >
+            Mode
+          </button>
         </div>
 
         <div className="flex items-center space-x-4 text-sm">
@@ -53,7 +66,7 @@ const Header = (props: Props) => {
           </p>
 
           <Link
-            href={"/addItem"}
+            href={"/additem"}
             className="flex items-center font-semibold hover:link"
           >
             Add to Inventory
@@ -68,15 +81,20 @@ const Header = (props: Props) => {
       <hr className="mt-2" />
 
       <section className="flex flex-col sm:flex-row items-center space-x-2 p-2 justify-between">
-        <div className="h-16 w-20 sm:w-28 md:w-30 cursor-pointer flex-shrink-0 ">
+        <div className="h-16 w-24 sm:w-28 md:w-30 cursor-pointer flex-shrink-0 my-2 md:my-0">
           <Link href={"/"}>
-            <Image
-              className="h-full w-full object-contain"
-              src="/../public/logo.png"
-              alt="eBay Logo"
-              width={100}
-              height={100}
-            ></Image>
+            <h2
+              className="text-bold text-center text-xl"
+              style={{
+                textShadow:
+                  "rgb(38 19 94) 4px 2px 0px, rgb(110 255 86) 4px 4px 0px",
+                color: "white",
+                fontSize: "2rem",
+                letterSpacing: "4px",
+              }}
+            >
+              Nifty Bids
+            </h2>
           </Link>
         </div>
 
@@ -85,22 +103,24 @@ const Header = (props: Props) => {
           <ChevronDownIcon className="h-4 flex-shrink-0"></ChevronDownIcon>
         </button>
         <div className="flex flex-row flex-1 gap-2 w-full">
-          <div className="flex flex-1 sm:justify-center items-center space-x-2 px-2 md:px-5 py-2 border-black border-2">
+          <div className="flex flex-1 sm:justify-center items-center space-x-2 px-2 md:px-5 py-2 border-gray-700 border-2">
             <MagnifyingGlassIcon className="w-5 text-gray-400 "></MagnifyingGlassIcon>
             <input
-              className="flex-1 outline-none"
+              className="flex-1 outline-none dark:bg-gray-900"
               type="text"
               placeholder="Search for anything"
             />
           </div>
 
-          <button className="hidden md:inline bg-blue-600 text-white px-5 md:px-10 py-2 border-2 border-blue-600 hover:bg-blue-800 order-4 sm:order-2">
+          <button className="hidden md:inline bg-green-600 text-white px-5 md:px-10 py-2 border-2 border-green-600 hover:bg-green-800 order-4 sm:order-2">
             Search
           </button>
-
-          <button className="text-blue-600 px-5 md:px-10 py-2 border-2 border-blue-600 hover:text-white hover:bg-blue-600/50 order-3 sm:order-2">
+          <Link
+            href="/listitem"
+            className="text-green-600 px-5 md:px-10 py-2 border-2 border-green-600 hover:text-white hover:bg-green-600/50 order-3 sm:order-2"
+          >
             List Item
-          </button>
+          </Link>
         </div>
       </section>
 
