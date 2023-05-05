@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 
 type Props = {};
 
-const additem = (props: Props) => {
+const AddItem = (props: Props) => {
   const { contract } = useContract(
     process.env.NEXT_PUBLIC_COLLECTION_CONTRACT,
     "nft-collection"
@@ -167,4 +167,4 @@ const additem = (props: Props) => {
   );
 };
 
-export default additem;
+export default AddItem;

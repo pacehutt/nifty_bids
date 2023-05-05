@@ -20,7 +20,7 @@ import { toast } from "react-hot-toast";
 
 type Props = {};
 
-const listitem = (props: Props) => {
+const Listitem = (props: Props) => {
   const address = useAddress();
   const router = useRouter();
 
@@ -278,4 +278,4 @@ const listitem = (props: Props) => {
   );
 };
 
-export default listitem;
+export default Listitem;
