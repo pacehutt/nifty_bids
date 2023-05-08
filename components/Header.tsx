@@ -43,15 +43,6 @@ const Header = (props: Props) => {
           <p className="hidden md:inline-flex cursor-pointer hover:link">
             Help and Contact
           </p>
-
-          <button
-            onClick={() =>
-              theme == "dark" ? setTheme("light") : setTheme("dark")
-            }
-            className="connectWalletBtn"
-          >
-            Mode
-          </button>
         </div>
 
         <div className="flex items-center space-x-4 text-sm">
