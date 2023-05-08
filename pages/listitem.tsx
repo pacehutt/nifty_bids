@@ -17,6 +17,7 @@ import {
 import network from "@/utils/network";
 import { useRouter } from "next/router";
 import { toast } from "react-hot-toast";
+import Loading from "@/components/Loading";
 
 type Props = {};
 
@@ -70,8 +71,13 @@ const Listitem = (props: Props) => {
     const target = e.target as typeof e.target & {
       listingType: { value: string };
       price: { value: number };
+      days: { value: number };
     };
-    const [listingType, price] = [target.listingType, target.price];
+    const [listingType, price, days] = [
+      target.listingType,
+      target.price,
+      target.days,
+    ];
 
     if (listingType.value === "directListing") {
       createDirectListing(
@@ -79,7 +85,7 @@ const Listitem = (props: Props) => {
           assetContractAddress: process.env.NEXT_PUBLIC_COLLECTION_CONTRACT!,
           tokenId: selectedNft.metadata.id,
           currencyContractAddress: NATIVE_TOKEN_ADDRESS,
-          listingDurationInSeconds: 60 * 60 * 24 * 7 * 50,
+          listingDurationInSeconds: 60 * 60 * 24 * days.value,
           buyoutPricePerToken: price.value,
           quantity: 1,
           startTimestamp: new Date(),
@@ -119,7 +125,7 @@ const Listitem = (props: Props) => {
           assetContractAddress: process.env.NEXT_PUBLIC_COLLECTION_CONTRACT!,
           tokenId: selectedNft.metadata.id,
           currencyContractAddress: NATIVE_TOKEN_ADDRESS,
-          listingDurationInSeconds: 60 * 60 * 24 * 7 * 50,
+          listingDurationInSeconds: 60 * 60 * 24 * days.value,
           buyoutPricePerToken: price.value,
           quantity: 1,
           startTimestamp: new Date(),
@@ -218,15 +224,8 @@ const Listitem = (props: Props) => {
           </div>
         )}
 
-        {nftLoading && (
-          <>
-            <div className="relative inset-0 flex flex-col items-center justify-center z-50 gap-2 mt-10 pt-10 md:mt-16">
-              <div className="animate-spin rounded-full w-10 border-t-4 border-b-4 border-gray-200 h-10"></div>
-              <p className="text-sm text-bold animate-pulse">
-                Loading your NFTs, please wait
-              </p>
-            </div>
-          </>
+        {address && nftLoading && (
+          <Loading message="Loading your NFTs, please wait..." />
         )}
 
         {selectedNft && (
@@ -251,6 +250,17 @@ const Listitem = (props: Props) => {
                   name="listingType"
                   value="auctionListing"
                   className="ml-auto h-8 w-8"
+                />
+                <label htmlFor="" className="border-r font-light">
+                  Listing upto (?) Days{" "}
+                </label>
+                <input
+                  type="number"
+                  name="days"
+                  placeholder="10 days"
+                  maxLength={3}
+                  max={365}
+                  className="bg-gray-700 p-5 rounded-md outline-none"
                 />
 
                 <label htmlFor="" className="border-r font-light">

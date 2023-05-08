@@ -105,63 +105,69 @@ const AddItem = (props: Props) => {
           By adding an item to the marketplace, you are essentially Minting an
           NFT of the item into your wallet which we can then list for sale.
         </p>
-
-        <div className="flex flex-col justify-center items-center md:flex-row md:space-x-5 pt-5 ">
-          <img
-            className="border h-80 w-80 object-contain"
-            src={preview || "https://images2.imgbox.com/f4/8f/qHs1ajWE_o.png"}
-            alt=""
-          />
-
-          <form
-            onSubmit={mintNft}
-            className="flex flex-col flex-1 p-2 space-y-3 "
-          >
-            <label htmlFor="" className="font-light">
-              Name of item
-            </label>
-            <input
-              type="text"
-              placeholder="Name of item..."
-              className="formField"
-              name="name"
-              id="name"
+        {!address && (
+          <p className="text-center text-sm font-semibold text-red-500 m-3">
+            Please connect your wallet to list an item.
+          </p>
+        )}
+        {address && (
+          <div className="flex flex-col justify-center items-center md:flex-row md:space-x-5 pt-5 ">
+            <img
+              className="border h-80 w-80 object-contain"
+              src={preview || "https://images2.imgbox.com/f4/8f/qHs1ajWE_o.png"}
+              alt=""
             />
 
-            <label htmlFor="" className="font-light">
-              Description
-            </label>
-            <input
-              type="text"
-              placeholder="Enter description..."
-              className="formField"
-              name="description"
-              id="description"
-            />
+            <form
+              onSubmit={mintNft}
+              className="flex flex-col flex-1 p-2 space-y-3 "
+            >
+              <label htmlFor="" className="font-light">
+                Name of item
+              </label>
+              <input
+                type="text"
+                placeholder="Name of item..."
+                className="formField"
+                name="name"
+                id="name"
+              />
 
-            <label htmlFor="" className="font-light">
-              Image of the item
-            </label>
-            <input
-              type="file"
-              className="fileField"
-              onChange={(e) => {
-                if (e.target.files?.[0]) {
-                  setPreview(URL.createObjectURL(e.target.files[0]));
-                  setImage(e.target.files[0]);
-                }
-              }}
-            />
-            <div className="mx-auto mt-5 md:ml-auto">
-              <button
-                type="submit"
-                className="hover:bg-green-800 font-bold text-white bg-green-600 rounded-full px-5 py-3 mx-auto mt-5 md:ml-auto w-56"
-              >
-                Add/Mint Item
-              </button>
-            </div>
-          </form>
-        </div>
+              <label htmlFor="" className="font-light">
+                Description
+              </label>
+              <input
+                type="text"
+                placeholder="Enter description..."
+                className="formField"
+                name="description"
+                id="description"
+              />
+
+              <label htmlFor="" className="font-light">
+                Image of the item
+              </label>
+              <input
+                type="file"
+                className="fileField"
+                onChange={(e) => {
+                  if (e.target.files?.[0]) {
+                    setPreview(URL.createObjectURL(e.target.files[0]));
+                    setImage(e.target.files[0]);
+                  }
+                }}
+              />
+              <div className="mx-auto mt-5 md:ml-auto">
+                <button
+                  type="submit"
+                  className="hover:bg-green-800 font-bold text-white bg-green-600 rounded-full px-5 py-3 mx-auto mt-5 md:ml-auto w-56"
+                >
+                  Add/Mint Item
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
       </main>
     </div>
   );
