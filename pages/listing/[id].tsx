@@ -306,10 +306,12 @@ const ListingItem = (props: Props) => {
             <div>
               <h1 className="text-xl font-bold">{listing?.asset.name}</h1>
               <p>{listing?.asset.description}</p>
-              <p className="flex items-center text-sm sm:text-base gap-1">
-                <UserCircleIcon className="h-5" />
+              <p className="flex flex-col justify-start md:flex-row items-baseline md:items-center text-sm sm:text-base gap-1 mt-4">
+                <UserCircleIcon className="h-5 hidden md:inline" />
                 <span className="font-bold pr-1">Seller :</span>
-                {listing?.sellerAddress}
+                <span className="truncate text-xs md:text-sm">
+                  {listing?.sellerAddress}
+                </span>
               </p>
             </div>
 
@@ -321,14 +323,14 @@ const ListingItem = (props: Props) => {
                   : "Auction Listing"}
               </p>
               <p className="font-bold">Buy at Now Price</p>
-              <p className="text-4xl font-bold">
+              <p className=" text-xl md:text-4xl font-bold">
                 {listing?.buyoutCurrencyValuePerToken.displayValue}{" "}
                 {listing?.buyoutCurrencyValuePerToken.symbol}
               </p>
 
               <button
                 onClick={buyNft}
-                className="hover:bg-green-800 font-bold text-lg col-start-2 mt-2 bg-green-600 text-white rounded-full w-44 py-4 px-10"
+                className="hover:bg-green-800 font-bold text-lg col-start-2 mt-2 bg-green-600 text-white rounded-full w-36 py-2 px-8 md:w-44 md:py-4 md:px-10"
               >
                 Buy now
               </button>
@@ -435,7 +437,7 @@ const ListingItem = (props: Props) => {
               />
               <button
                 onClick={createBidOrOffer}
-                className="hover:bg-orange-800 bg-orange-700 text-lg font-bold w-44 py-4 px-10 rounded-full"
+                className="hover:bg-orange-800 bg-orange-700 text-lg font-bold w-36 py-2 px-8 md:w-44 md:py-4 md:px-10 rounded-full"
               >
                 {" "}
                 {listing?.type === ListingType.Direct ? "Offer" : "Bid"}

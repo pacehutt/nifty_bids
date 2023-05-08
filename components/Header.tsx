@@ -108,7 +108,7 @@ const Header = (props: Props) => {
           </button>
           <Link
             href="/listitem"
-            className="text-green-600 px-5 md:px-10 py-2 border-2 border-green-600 hover:text-white hover:bg-green-600/50 order-3 sm:order-2"
+            className="text-green-600 px-2 md:px-10 py-2 border-2 border-green-600 hover:text-white hover:bg-green-600/50 order-3 sm:order-2"
           >
             List Item
           </Link>
